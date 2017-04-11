@@ -1,0 +1,12 @@
+#Program to open a file and search each line "
+fname=raw_input("Enter the file name:")
+try:
+    fhand=open(fname)
+except:
+    print "File can not be found:", fname
+    exit()
+count=0
+for line in fhand:
+    if line.startswith('Subject'):
+        count=count+1
+print "There were", count, "subject lines in", fname
