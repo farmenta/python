@@ -1,0 +1,6 @@
+#Program to open a file and search each line for the word "From"
+fhand=open("mbox-short.txt")
+for line in fhand:
+    line=line.strip()
+    if line.startswith('From:'):
+        print line
