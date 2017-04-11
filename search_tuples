@@ -1,0 +1,29 @@
+"""A program that reads through email_file.txt and figure out the distribution by hour of the day for each of the messages. 
+It ccumulates the counts for each hour, print out the counts, sorted by hour as shown below.
+Sample ouput
+Desired Output
+04 3
+06 1
+07 1
+"""
+
+name = raw_input("Enter file:")
+if len(name) < 1 : name = "mbox-short.txt"
+handle = open(name)
+
+timedict = dict()
+for line in handle:
+    if line.startswith('From '):
+        words =line.split()
+        time = words[5]
+        hour_list = time.split(":")
+        hour = hour_list[0]
+        timedict[hour] = timedict.get(hour,0) + 1
+
+lst = list()
+for key, val in timedict.items():
+    lst.append((key, val))
+    lst.sort()
+
+for key, val in lst[:100]:
+    print key, val
